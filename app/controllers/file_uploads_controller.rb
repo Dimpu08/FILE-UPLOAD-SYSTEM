@@ -46,4 +46,8 @@ class FileUploadsController < ApplicationController
   def file_upload_params
     params.require(:file_upload).permit(:title, :description, :file)
   end
+
+  def all_files
+    @file_uploads = current_user.file_uploads
+  end
 end
