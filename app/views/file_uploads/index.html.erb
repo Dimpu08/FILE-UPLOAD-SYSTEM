@@ -1,6 +1,8 @@
 <h1>Your Uploaded Files</h1>
 
 <%= link_to 'Upload New File', new_file_upload_path, class: 'btn btn-primary' %>
+<%= link_to 'Logout', logout_path, class: 'btn btn-secondary', data: { confirm: 'Are you sure you want to log out?' } %>
+
 <table>
   <thead>
     <tr>
