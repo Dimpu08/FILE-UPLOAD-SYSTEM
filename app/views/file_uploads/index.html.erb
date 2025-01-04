@@ -1,0 +1,28 @@
+<h1>Your Uploaded Files</h1>
+
+<%= link_to 'Upload New File', new_file_upload_path, class: 'btn btn-primary' %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @file_uploads.each do |file| %>
+      <tr>
+        <td><%= file.title %></td>
+        <td><%= file.description %></td>
+        <td>
+          <%= link_to 'Delete', file_upload_path(file), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% if file.shared_url.present? %>
+            <%= link_to 'Shared URL', file.shared_url, target: '_blank' %>
+          <% else %>
+            <%= button_to 'Share', share_file_upload_path(file), method: :post %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
